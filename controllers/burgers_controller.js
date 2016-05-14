@@ -20,6 +20,16 @@ router.post('/burger/create', function(req,res) {
 	});
 });
 
+router.put('/burger/update/:id', function(req,res) {
+	var condition = 'id = ' + req.params.id;
+
+	console.log(req.body.devoured);
+
+	burgers.update({'devoured' : req.body.devoured}, condition, function(data){
+		res.redirect('/burger');
+	});
+});
+
 router.delete('/burger/delete/:id', function(req,res) {
 	var condition = 'id = ' + req.params.id;
 
